@@ -46,124 +46,125 @@ Used to retrieve records from a table.
 SELECT column1, column2 FROM table_name WHERE condition;
 ```
 **Question 1**
---
--- Paste Question 1 here
+Write a SQL statement to Increase the selling price by 10% for all products in the 'Bakery' category in the products table.
 
-```sql
--- Paste your SQL code below for Question 1
+
+```
+UPDATE Products
+SET sell_price=sell_price*1.10 
+Where category='Bakery';
 ```
 
 **Output:**
+![image](https://github.com/user-attachments/assets/798512d0-3331-4a0d-9d15-17973f92b1b9)
 
-![Output1](output.png)
 
 **Question 2**
----
--- Paste Question 2 here
+Write a SQL query to reduce the reorder level by 30% where cost price is more than 50 and quantity in stock is less than 100 in the products table.
 
-```sql
--- Paste your SQL code below for Question 2
+```UPDATE Products
+SET reorder_lvl=reorder_lvl *0.7
+where cost_price >50 AND  quantity<100;
 ```
 
 **Output:**
+![image](https://github.com/user-attachments/assets/7822f586-579e-4cd6-9dc9-5afd9ad8796a)
 
-![Output2](output.png)
+
 
 **Question 3**
----
--- Paste Question 3 here
+For  Increase the selling price per unit by 3 for all products supplied by supplier ID 4 in the sales table.
 
-```sql
--- Paste your SQL code below for Question 3
+```
+UPDATE SALES
+SET sell_price=sell_price+3
+where product_id IN
+(SELECT product_id FROM products
+Where supplier_id=4
+);
 ```
 
 **Output:**
-
-![Output3](output.png)
+![image](https://github.com/user-attachments/assets/11a21882-520e-4c7c-bf70-5f1258790b6e)
 
 **Question 4**
----
--- Paste Question 4 here
+Update the reorder level to 40 pieces for all products belonging to the 'Grocery' category in the products table.
 
-```sql
--- Paste your SQL code below for Question 4
 ```
-
+UPDATE PRODUCTS
+SET reorder_lvl=40
+where category='Grocery';
+```
 **Output:**
-
-![Output4](output.png)
+![image](https://github.com/user-attachments/assets/ea993366-e508-46be-9ce4-b36c86bd9007)
 
 **Question 5**
----
--- Paste Question 5 here
+Write a SQL query to Delete customers from 'customer' table where 'CUST_COUNTRY' is neither 'India' nor 'USA'.
 
-```sql
--- Paste your SQL code below for Question 5
+```
+DELETE FROM Customer
+Where CUST_COUNTRY NOT IN('India','USA');
 ```
 
 **Output:**
-
-![Output5](output.png)
+![image](https://github.com/user-attachments/assets/9008fb26-6225-48d9-b6bb-b7abed51ed0f)
 
 **Question 6**
----
--- Paste Question 6 here
+Write a SQL query to Delete all Doctors whose Specialization is either 'Pediatrics' or 'Cardiology' and Last Name is Brown
 
-```sql
--- Paste your SQL code below for Question 6
+```
+DELETE FROM Doctors
+where specialization IN ('Pediatrics','Cardiology') and last_name ='Brown';
 ```
 
 **Output:**
-
-![Output6](output.png)
+![image](https://github.com/user-attachments/assets/37a7810e-39aa-4edb-8843-ba83aab3c90f)
 
 **Question 7**
----
--- Paste Question 7 here
+Write a SQL query to Delete customers with 'GRADE' 3 or 'AGENT_CODE' 'A008' whose 'OUTSTANDING_AMT' is less than 5000
 
-```sql
--- Paste your SQL code below for Question 7
+```
+DELETE FROM Customer
+where (GRADE = 3 or AGENT_CODE='A008') and OUTSTANDING_AMT < 5000;
 ```
 
 **Output:**
-
-![Output7](output.png)
+![image](https://github.com/user-attachments/assets/accd0231-b177-4982-b191-98e56d714191)
 
 **Question 8**
----
--- Paste Question 8 here
+Write a SQL query to Delete All Doctors with a NULL Last Name
 
-```sql
--- Paste your SQL code below for Question 8
+```DELETE FROM Doctors
+where last_name is NULL;
 ```
 
 **Output:**
+![image](https://github.com/user-attachments/assets/497841d4-9ae8-48c4-9abe-1d95e103d141)
 
-![Output8](output.png)
 
 **Question 9**
----
--- Paste Question 9 here
+Write a SQL query to Delete customers from 'customer' table where 'WORKING_AREA' is 'New York'.
 
-```sql
--- Paste your SQL code below for Question 9
+```DELETE FROM Customer
+where WORKING_AREA='New York';
 ```
 
 **Output:**
-
-![Output9](output.png)
+![image](https://github.com/user-attachments/assets/9159af09-f387-40de-b60d-276142807311)
 
 **Question 10**
----
--- Paste Question 10 here
+Write a SQL statement to Find the salesmen with all information who gets the commission within a range of 0.12 and 0.14.
 
-```sql
--- Paste your SQL code below for Question 10
+```
+Select * From salesman
+where commission BETWEEN 0.12 and 0.14;
 ```
 
 **Output:**
+![image](https://github.com/user-attachments/assets/8ba745eb-37d2-4373-8809-f207b56c9f80)
 
-![Output10](output.png)
+
+
 
 ## RESULT
 Thus, the SQL queries to implement DML commands have been executed successfully.
