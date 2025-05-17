@@ -104,124 +104,179 @@ CREATE TABLE Table_Name (
 ```
 
 **Question 1**
---
--- Paste Question 1 here
+Create a table named ProjectAssignments with the following constraints:
+AssignmentID as INTEGER should be the primary key.
+EmployeeID as INTEGER should be a foreign key referencing Employees(EmployeeID).
+ProjectID as INTEGER should be a foreign key referencing Projects(ProjectID).
+AssignmentDate as DATE should be NOT NULL.
 
 ```sql
--- Paste your SQL code below for Question 1
+CREATE TABLE ProjectAssignments
+( AssignmentID  INTEGER PRIMARY KEY,
+  EmployeeID INTEGER,
+  ProjectID INTEGER,
+  AssignmentDate DATE NOT NULL,
+  FOREIGN KEY(EmployeeID) REFERENCES Employees(EmployeeID),
+  FOREIGN KEY(ProjectID) REFERENCES Projects(ProjectID)
+);
 ```
 
 **Output:**
-
-![Output1](output.png)
+![image](https://github.com/user-attachments/assets/c39f4694-978b-48f2-b4a8-e8fe88f2527b)
 
 **Question 2**
----
--- Paste Question 2 here
+Write a SQL query to Add a new column named "discount" with the data type DECIMAL(5,2) to the "customer" table.
 
 ```sql
--- Paste your SQL code below for Question 2
+ALTER TABLE customer
+ADD COLUMN discount DECIMAL(5,2);
 ```
-
 **Output:**
-
-![Output2](output.png)
+![image](https://github.com/user-attachments/assets/b683b685-a081-488a-90f7-a475ce8eadbb)
 
 **Question 3**
----
--- Paste Question 3 here
+In the Products table, insert a record where some fields are NULL, another record where all fields are filled without any NULL values, and a third record where some fields are filled, and others are left as NULL.
 
 ```sql
--- Paste your SQL code below for Question 3
+INSERT INTO Products(ProductID ,Name ,Category ,Price,Stock)
+VALUES
+(106,'Fitness Tracker','Wearables',' ',' '),
+(107,'Laptop','Electronic','999.99',50),
+(108,'Wireless Earbud','Accessorie',' ',100);
 ```
 
 **Output:**
-
-![Output3](output.png)
+![image](https://github.com/user-attachments/assets/b6c04f2c-ea2d-4047-a972-60ff55965ee2)
 
 **Question 4**
----
--- Paste Question 4 here
-
-```sql
--- Paste your SQL code below for Question 4
+Insert the below data into the Customers table, allowing the City and ZipCode columns to take their default values.
 ```
+INSERT INTO Customers
+(CustomerID,Name,Address)
+VALUES
+(304,'Peter Parker','Spider St');
 
+```
 **Output:**
-
-![Output4](output.png)
+![image](https://github.com/user-attachments/assets/fa106b98-95a3-4e0e-b231-e11adb8d448c)
 
 **Question 5**
----
--- Paste Question 5 here
+Create a new table named contacts with the following specifications:
+contact_id as INTEGER and primary key.
+first_name as TEXT and not NULL.
+last_name as TEXT and not NULL.
+email as TEXT.
+phone as TEXT and not NULL with a check constraint to ensure the length of phone is at least 10 characters.
 
-```sql
--- Paste your SQL code below for Question 5
+```
+CREATE TABLE contacts
+( contact_id INTEGER PRIMARY KEY,
+  first_name TEXT NOT NULL,
+  last_name TEXT NOT NULL,
+  email TEXT,
+  phone TEXT NOT NULL CHECK(LENGTH(phone)>=10)
+);
 ```
 
 **Output:**
 
-![Output5](output.png)
+![image](https://github.com/user-attachments/assets/46264b78-95ca-444b-88a8-4a0ef1996df2)
+
 
 **Question 6**
----
--- Paste Question 6 here
+Create a table named Department with the following constraints:
+DepartmentID as INTEGER should be the primary key.
+DepartmentName as TEXT should be unique and not NULL.
+Location as TEXT.
 
-```sql
--- Paste your SQL code below for Question 6
+```CREATE TABLE Department
+( DepartmentID INTEGER PRIMARY KEY,
+  DepartmentName TEXT NOT NULL UNIQUE,
+  Location TEXT
+);
+
 ```
-
 **Output:**
-
-![Output6](output.png)
+![image](https://github.com/user-attachments/assets/ba7a0c8a-538f-46f3-914d-3362c5729cb1)
 
 **Question 7**
----
--- Paste Question 7 here
+Create a table named Events with the following columns:
 
-```sql
--- Paste your SQL code below for Question 7
+EventID as INTEGER
+EventName as TEXT
+EventDate as DATE
+
+```
+CREATE TABLE Events
+(
+EventID INTEGER,
+EventName TEXT,
+EventDate DATE
+);
+
 ```
 
 **Output:**
+![image](https://github.com/user-attachments/assets/939458c5-396e-4643-889b-8d790d960f5c)
 
-![Output7](output.png)
 
 **Question 8**
----
--- Paste Question 8 here
+Create a new table named item with the following specifications and constraints:
+item_id as TEXT and as primary key.
+item_desc as TEXT.
+rate as INTEGER.
+icom_id as TEXT with a length of 4.
+icom_id is a foreign key referencing com_id in the company table.
+The foreign key should cascade updates and deletes.
+item_desc and rate should not accept NULL.
 
-```sql
--- Paste your SQL code below for Question 8
+```CREATE TABLE item
+(
+item_id TEXT PRIMARY KEY,
+item_desc TEXT NOT NULL,
+rate INTEGER NOT NULL,
+icom_id TEXT CHECK(LENGTH(icom_id)=4),
+FOREIGN KEY(icom_id)REFERENCES company(com_id)
+ON UPDATE CASCADE
+ON DELETE CASCADE
+
+);
 ```
-
 **Output:**
 
-![Output8](output.png)
+![image](https://github.com/user-attachments/assets/d38d8590-6b9a-4c79-8cb9-7f1cf6883001)
 
 **Question 9**
----
--- Paste Question 9 here
+Insert all employees from Former_employees into Employee
 
-```sql
--- Paste your SQL code below for Question 9
+Table attributes are EmployeeID, Name, Department, Salary
+
+
+```INSERT INTO Employee
+(EmployeeID,Name,Department,Salary)
+SELECT EmployeeID,Name,Department,Salary
+FROM Former_employees;
 ```
 
 **Output:**
 
-![Output9](output.png)
+![image](https://github.com/user-attachments/assets/e67f139e-b656-4b31-a5ae-20e6a8260d1b)
 
 **Question 10**
----
--- Paste Question 10 here
+Write a SQL Query  to change the name of attribute "name" to "first_name"  and add mobilenumber as number ,DOB as Date in the table Companies
 
-```sql
--- Paste your SQL code below for Question 10
+```
+ALTER TABLE Companies
+RENAME COLUMN name TO first_name;
+ALTER TABLE Companies 
+ADD COLUMN mobilenumber number;
+ALTER TABLE Companies 
+ADD COLUMN DOB Date;
 ```
 
 **Output:**
+![image](https://github.com/user-attachments/assets/d2fdc449-4a66-46a7-ab1f-d215bbdbfc60)
 
-![Output10](output.png)
 
 
 ## RESULT
